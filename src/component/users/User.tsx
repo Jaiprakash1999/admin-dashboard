@@ -6,11 +6,27 @@ import SearchInput from "../../common-component/SearchInpput";
 import MobileView from "./MobileView";
 import DesktopView from "./DesktopView";
 
+type User = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  avatar: string;
+  // add other fields as needed
+};
+
+type UserResponse = {
+  data: User[];
+  per_page: number;
+  total: number;
+};
+
 const User = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState("");
   const { users = {}, isLoading, error } = useGetUsers({ currentPage });
-  const { data = [], per_page = 6, total = 0 } = users || {};
+
+  const { data = [], per_page = 6, total = 0 } = (users || {}) as UserResponse;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target || {};
