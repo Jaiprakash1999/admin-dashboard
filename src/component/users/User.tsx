@@ -23,7 +23,7 @@ const User = () => {
 
   return (
     <div className="w-full relative">
-      <div className="w-1/4 mb-8">
+      <div className="w-1/4 mb-6">
         <SearchInput inputValue={query} onChange={handleChange} />
       </div>
       <div className="hidden md:block w-full border overflow-x-scroll  border-gray-200">

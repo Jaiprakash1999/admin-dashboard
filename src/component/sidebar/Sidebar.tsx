@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <nav className=" shadow h-[92.5vh]">
+    <nav className="pt-3 shadow h-[92.5vh]">
       <ul>
         <li>
           <NavLink
