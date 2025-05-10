@@ -3,6 +3,7 @@ import Pagination from "../../common-component/Pagination";
 import useGetUsers from "../hooks/useGetUsers";
 import ListLoader from "../../common-component/LoadingState";
 import SearchInput from "../../common-component/SearchInpput";
+import MobileLoading from "../../common-component/MobileLoading";
 
 const User = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +24,7 @@ const User = () => {
 
   return (
     <div className="w-full relative">
-      <div className="w-1/4 mb-6">
+      <div className="w-full md:w-1/4 mb-6">
         <SearchInput inputValue={query} onChange={handleChange} />
       </div>
       <div className="hidden md:block w-full border overflow-x-scroll  border-gray-200">
@@ -67,27 +68,41 @@ const User = () => {
         )}
       </div>
       <div className="md:hidden space-y-4">
-        {data.map(({ id, first_name, last_name, email, avatar }) => (
-          <div
-            key={id}
-            className="border rounded-xl p-4 shadow-sm flex gap-4 items-center"
-          >
-            <img
-              src={avatar}
-              alt={`avatar${id}`}
-              className="h-16 w-16 rounded-full object-cover"
-            />
-            <div>
-              <div className="font-bold text-lg">
-                {first_name} {last_name}
-              </div>
-              <div className="text-sm text-gray-600">{email}</div>
-              <div className="text-xs text-gray-400">ID: {id}</div>
-            </div>
+        {isLoading ? (
+          <MobileLoading />
+        ) : (
+          <div className="w-full">
+            {filteredData.length > 0 ? (
+              filteredData.map((user) => {
+                const { first_name, avatar, last_name, id, email } = user || {};
+                return (
+                  <div
+                    key={id}
+                    className="border rounded-xl p-4 mb-4 shadow-sm flex gap-4 items-center"
+                  >
+                    <img
+                      src={avatar}
+                      alt={`avatar${id}`}
+                      className="h-16 w-16 rounded-full object-cover"
+                    />
+                    <div>
+                      <div className="font-bold text-lg">
+                        {first_name} {last_name}
+                      </div>
+                      <div className="text-sm text-gray-600">{email}</div>
+                      <div className="text-xs text-gray-400">ID: {id}</div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-center py-4">No data found</div>
+            )}
           </div>
-        ))}
+        )}
       </div>
-      <div className=" mt-8">
+
+      <div className="mt-8 pb-8">
         <Pagination
           totalRecords={total}
           countsPerPage={per_page}

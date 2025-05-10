@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Profile from "../profile/Profile";
 import Notifications from "../ntofications/Notifications";
+import MobileHeader from "../sidebar/MobileNavbar";
 
 const TopNavbar = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -10,6 +11,9 @@ const TopNavbar = () => {
   return (
     <div className="fixed z-50 border-b w-full bg-white p-4">
       <div className="flex justify-between gap-6  mx-4 items-center">
+        <div className="sm:hidden">
+          <MobileHeader />
+        </div>
         <div>Admin Dashboard</div>
         <div className="flex relative gap-6 items-center">
           <div className="relative">

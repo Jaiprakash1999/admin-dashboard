@@ -6,12 +6,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ showNavigation = false, handleNavigation = () => {} }) => {
   return (
-    <nav className="pt-3 shadow h-[92.5vh]">
+    <nav className={`pt-3 shadow ${showNavigation ? "pb-4" : " h-[92.5vh]"}`}>
       <ul>
         <li>
           <NavLink
+            onClick={() => handleNavigation(false)}
             to="/dashboard"
             className={({ isActive }) =>
               `m-3 py-2 px-4 flex items-center  rounded-lg ${
@@ -26,6 +27,7 @@ const Sidebar = () => {
 
         <li>
           <NavLink
+            onClick={() => handleNavigation(false)}
             to="/users"
             className={({ isActive }) =>
               `m-3 py-2 px-4 flex items-center rounded-lg ${
@@ -39,6 +41,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink
+            onClick={() => handleNavigation(false)}
             to="/reports"
             className={({ isActive }) =>
               `m-3 py-2 px-4 flex items-center text-left rounded-lg ${

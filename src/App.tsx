@@ -9,9 +9,10 @@ function App() {
     <BrowserRouter>
       <TopNavbar />
       <div className="flex m-auto">
-        <div className="flex pt-14">
+        <div className="hidden sm:block pt-14">
           <Sidebar />
         </div>
+
         <div className="w-full mx-6 h-[60vh] pt-20">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
