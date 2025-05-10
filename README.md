@@ -4,13 +4,13 @@ A responsive admin dashboard built using React, TypeScript, and Tailwind CSS. It
 
 ## Features
 
-- 🔍 **Search** by first or last name
-- 📱 **Responsive** UI: Desktop and mobile-specific views
-- 🔄 **Loading Skeletons** for smooth UX during data fetch
-- ⏬ **Pagination** with per-page control
-- 🧠 **Optimized with memo** for performance
-- ✅ Written in **TypeScript**
-- 💅 Styled using **Tailwind CSS**
+- **Search** by first or last name
+- **Responsive** UI: Desktop and mobile-specific views
+- **Loading Skeletons** for smooth UX during data fetch
+- **Pagination** with per-page control
+- **Optimized with memo** for performance
+- Written in **TypeScript**
+- Styled using **Tailwind CSS**
 
 ## Tech Stack
 
@@ -20,6 +20,7 @@ A responsive admin dashboard built using React, TypeScript, and Tailwind CSS. It
 - Axios
 - Vite
 - React Loading Skeleton
+- FontAwesome Icon
 
 ## API
 

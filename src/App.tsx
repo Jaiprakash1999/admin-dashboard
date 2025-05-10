@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./component/sidebar/Sidebar";
 import User from "./component/users/User";
 import TopNavbar from "./component/top-navbar/TopNavbar";
@@ -15,6 +15,7 @@ function App() {
 
         <div className="w-full mx-6 h-[60vh] pt-20">
           <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/users" element={<User />} />
             <Route path="/reports" element={<User />} />
