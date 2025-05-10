@@ -28,7 +28,7 @@ This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginat
 
 ### Example response:
 
-```json
+````json
 {
   "page": 1,
   "per_page": 6,
@@ -44,15 +44,17 @@ This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginat
     }
   ]
 }
-```
-Getting Started
-Prerequisites
-Node.js ≥ 18
 
-npm or yarn
+## Getting Started
 
-Installation
-```json
+### Prerequisites
+
+- Node.js ≥ 18
+- npm or yarn
+
+### Installation
+
+```bash
 # Clone the repository
 git clone https://github.com/yourusername/admin-dashboard.git
 cd admin-dashboard
@@ -63,8 +65,8 @@ npm install
 # Start the development server
 npm run dev
 
+
 -- **Author**
 Jaiprakash Kushwaha
 
-
-
+````
