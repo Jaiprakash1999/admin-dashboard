@@ -4,14 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Define the types for props
 type SearchInputProps = {
   inputValue: string;
-  placeholder: string;
+  placeholder?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  icon: React.ReactNode;
-  required: boolean;
-  name: string;
-  autoFocus: boolean;
-  onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  className: string;
+  icon?: React.ReactNode;
+  name?: string;
+  autoFocus?: boolean;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  className?: string;
 };
 
 const SearchInput = ({
@@ -19,7 +18,6 @@ const SearchInput = ({
   placeholder = "Search",
   onChange = () => {},
   icon = <FontAwesomeIcon icon={faMagnifyingGlass} color="#6B7280" />,
-  required = false,
   name = "",
   autoFocus = false,
   onKeyDown = () => {},
@@ -34,7 +32,6 @@ const SearchInput = ({
         type="search"
         placeholder={placeholder}
         onChange={onChange}
-        required={required}
         name={name}
         onKeyDown={onKeyDown}
         className={className}

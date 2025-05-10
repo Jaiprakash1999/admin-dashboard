@@ -10,15 +10,15 @@ const User = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState("");
   const { users = {}, isLoading, error } = useGetUsers({ currentPage });
-  const { data = [], per_page, total } = users || {};
+  const { data = [], per_page = 6, total = 0 } = users || {};
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target || {};
     setQuery(value);
   };
 
   const filteredData = data.filter(
-    (user) =>
+    (user: { first_name: string; last_name: string }) =>
       user.first_name.toLowerCase().includes(query.toLowerCase()) ||
       user.last_name.toLowerCase().includes(query.toLowerCase())
   );

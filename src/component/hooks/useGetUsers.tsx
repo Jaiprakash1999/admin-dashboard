@@ -35,7 +35,13 @@ type UseGetUsersReturn = {
 const useGetUsers = ({
   currentPage = 1,
 }: UseGetUsersProps): UseGetUsersReturn => {
-  const [users, setUsers] = useState<ApiResponse | null>(null);
+  const [users, setUsers] = useState<ApiResponse>({
+    page: 0,
+    per_page: 0,
+    total: 0,
+    total_pages: 0,
+    data: [],
+  });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
