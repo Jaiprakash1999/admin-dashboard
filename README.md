@@ -1,34 +1,40 @@
 # React + TypeScript Admin Dashboard
 
-A responsive admin dashboard built using React, TypeScript, and Tailwind CSS. It fetches user data from a public API and displays it with support for search, pagination, loading states, and responsive layouts for desktop and mobile.
+A responsive admin dashboard built using **React**, **TypeScript**, and **Tailwind CSS**. It fetches user data from a public API and displays it with support for search, pagination, loading states, and responsive layouts for desktop and mobile.
+
+---
 
 ## Features
 
 - **Search** by first or last name
-- **Responsive** UI: Desktop and mobile-specific views
-- **Loading Skeletons** for smooth UX during data fetch
-- **Pagination** with per-page control
-- **Optimized with memo** for performance
+- **Responsive UI** for desktop and mobile
+- **Loading Skeletons** for a smooth UX during data fetch
+- **Pagination** with items per page control
+- **Optimized with `memo`** for performance
 - Written in **TypeScript**
 - Styled using **Tailwind CSS**
 
+---
+
 ## Tech Stack
 
-- React
-- TypeScript
-- Tailwind CSS
-- Axios
-- Vite
-- React Loading Skeleton
-- FontAwesome Icon
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios**
+- **Vite**
+- **React Loading Skeleton**
+- **FontAwesome Icons**
+
+---
 
 ## API
 
 This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginated user data.
 
-### Example response:
+### Example Response
 
-````json
+```json
 {
   "page": 1,
   "per_page": 6,
@@ -44,6 +50,9 @@ This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginat
     }
   ]
 }
+```
+
+---
 
 ## Getting Started
 
@@ -64,9 +73,10 @@ npm install
 
 # Start the development server
 npm run dev
+```
 
+---
 
--- **Author**
-Jaiprakash Kushwaha
+## Author
 
-````
+**Jaiprakash Kushwaha**
