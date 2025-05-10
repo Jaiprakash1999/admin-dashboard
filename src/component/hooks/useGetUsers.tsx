@@ -1,33 +1,69 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 
-const useGetUsers = ({ currentPage = 1 }) => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+// Define a user type based on the API response
+type User = {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+};
 
+// Define the structure of the API response
+type ApiResponse = {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: User[];
+};
+
+// Hook props
+type UseGetUsersProps = {
+  currentPage: number;
+};
+
+// Return value type
+type UseGetUsersReturn = {
+  users: ApiResponse | null;
+  isLoading: boolean;
+  error: string | null;
+};
+
+// Custom hook to fetch users from the API
+const useGetUsers = ({
+  currentPage = 1,
+}: UseGetUsersProps): UseGetUsersReturn => {
+  const [users, setUsers] = useState<ApiResponse | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Memoized function to fetch users
   const getUsers = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("https://reqres.in/api/users", {
-        params: {
-          page: currentPage,
-        },
+      const res = await axios.get<ApiResponse>("https://reqres.in/api/users", {
+        params: { page: currentPage },
         headers: {
           "x-api-key": "reqres-free-v1",
         },
       });
       setUsers(res.data);
       setError(null);
-    } catch (error) {
-      setError(error.error);
-      console.log(error, "error");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setError(err?.message || "Something went wrong");
+      } else {
+        setError("Something went wrong");
+      }
+      console.error(err);
     } finally {
       setIsLoading(false);
     }
   }, [currentPage]);
-  // useCallback is used to memoize the function so that it doesn't get recreated on every render
 
+  // Trigger API call when currentPage changes
   useEffect(() => {
     getUsers();
   }, [getUsers, currentPage]);
