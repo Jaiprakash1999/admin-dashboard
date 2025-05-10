@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# React + TypeScript Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive admin dashboard built using React, TypeScript, and Tailwind CSS. It fetches user data from a public API and displays it with support for search, pagination, loading states, and responsive layouts for desktop and mobile.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Search** by first or last name
+- 📱 **Responsive** UI: Desktop and mobile-specific views
+- 🔄 **Loading Skeletons** for smooth UX during data fetch
+- ⏬ **Pagination** with per-page control
+- 🧠 **Optimized with memo** for performance
+- ✅ Written in **TypeScript**
+- 💅 Styled using **Tailwind CSS**
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Tailwind CSS
+- Axios
+- Vite
+- React Loading Skeleton
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## API
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginated user data.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Example response:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```json
+{
+  "page": 1,
+  "per_page": 6,
+  "total": 12,
+  "total_pages": 2,
+  "data": [
+    {
+      "id": 1,
+      "email": "george.bluth@reqres.in",
+      "first_name": "George",
+      "last_name": "Bluth",
+      "avatar": "https://reqres.in/img/faces/1-image.jpg"
+    }
+  ]
+}
 ```
