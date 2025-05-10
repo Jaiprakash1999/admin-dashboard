@@ -35,19 +35,19 @@ const Notifications = ({
     <div
       ref={notificationRef}
       style={{ boxShadow: "0 0 8px rgb(44 62 80 / 20%)" }}
-      className="text-[#374151] bg-white text-sm right-5 top-10 rounded-md absolute"
+      className="text-primary bg-white text-sm right-5 top-10 rounded-md absolute"
     >
       {/* Header */}
-      <div className="bg-[#F9FAFB] text-[#111928] py-2 flex justify-center">
+      <div className="bg-[#F9FAFB] py-2 border-b flex justify-center">
         Notifications
       </div>
 
       {/* Sample message */}
       <div className="px-4 py-2">
-        <div className="text-[#6B7280] text-wrap text-sm">
+        <div className="text-secondary text-wrap text-sm">
           JP sent you a message
         </div>
-        <div className="text-[#1A56DB] text-sm">a few moments ago</div>
+        <div className="text-success text-sm">a few moments ago</div>
       </div>
     </div>
   );

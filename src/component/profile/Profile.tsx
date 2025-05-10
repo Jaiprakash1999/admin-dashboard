@@ -43,11 +43,11 @@ const Profile = ({
       <div
         ref={dropDownRef}
         style={{ boxShadow: "0 0 8px rgb(44 62 80 / 20%)" }}
-        className="text-[#374151] bg-white text-sm right-5 top-10 rounded-md absolute"
+        className="text-primary bg-white text-sm right-5 top-10 rounded-md absolute"
       >
         {/* User info */}
         <div className="py-2 px-3 flex flex-col">
-          <span className="text-[#1F2A37] font-semibold">Jaiprakash</span>
+          <span className="text-primary font-semibold">Jaiprakash</span>
           <span className="cursor-pointer font-normal">Admin</span>
         </div>
 
@@ -66,7 +66,7 @@ const Profile = ({
         </div>
 
         {/* Logout */}
-        <div className="border-t py-2 hover:underline text-center text-[#F05252] cursor-pointer px-3">
+        <div className="border-t py-2 hover:underline text-center text-alert cursor-pointer px-3">
           <button onClick={onLogout}>Log Out</button>
         </div>
       </div>
