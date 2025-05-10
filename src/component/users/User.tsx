@@ -9,7 +9,7 @@ import DesktopView from "./DesktopView";
 const User = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState("");
-  const { users = {}, isLoading } = useGetUsers({ currentPage });
+  const { users = {}, isLoading, error } = useGetUsers({ currentPage });
   const { data = [], per_page, total } = users || {};
 
   const handleChange = (e) => {
@@ -32,16 +32,22 @@ const User = () => {
           placeholder={"search by first name & last name"}
         />
       </div>
-      <DesktopView isLoading={isLoading} filteredData={filteredData} />
-      <MobileView isLoading={isLoading} filteredData={filteredData} />
-      <div className="mt-8 pb-8">
-        <Pagination
-          totalRecords={total}
-          countsPerPage={per_page}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
+      {!error ? (
+        <>
+          <DesktopView isLoading={isLoading} filteredData={filteredData} />
+          <MobileView isLoading={isLoading} filteredData={filteredData} />
+          <div className="mt-8 pb-8">
+            <Pagination
+              totalRecords={total}
+              countsPerPage={per_page}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        </>
+      ) : (
+        error
+      )}
     </div>
   );
 };
