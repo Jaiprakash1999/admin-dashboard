@@ -1,9 +1,11 @@
-import { useState } from "react";
+import User from "./component/users/User";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="text-ellipsis text-red-600">Hello world</div>;
+  return (
+    <div className="m-10">
+      <User />
+    </div>
+  );
 }
 
 export default App;
