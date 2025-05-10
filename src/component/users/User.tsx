@@ -2,13 +2,30 @@ import { useState } from "react";
 import Pagination from "../../common-component/Pagination";
 import useGetUsers from "../hooks/useGetUsers";
 import ListLoader from "../../common-component/LoadingState";
+import SearchInput from "../../common-component/SearchInpput";
 
 const User = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState("");
   const { users = {}, isLoading } = useGetUsers({ currentPage });
   const { data = [], per_page, total } = users || {};
+
+  const handleChange = (e) => {
+    const { value } = e.target || {};
+    setQuery(value);
+  };
+
+  const filteredData = data.filter(
+    (user) =>
+      user.first_name.toLowerCase().includes(query.toLowerCase()) ||
+      user.last_name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
-    <div className="w-full ">
+    <div className="w-full relative">
+      <div className="w-1/4 mb-8">
+        <SearchInput inputValue={query} onChange={handleChange} />
+      </div>
       <div className="hidden md:block w-full border overflow-x-scroll  border-gray-200">
         <div className="text-left grid grid-cols-5 gap-5 overflow-x-scroll w-full p-4 items-center uppercase bg-[#F9FAFB] text-sm font-medium text-gray-800">
           <span className=""></span>
@@ -21,8 +38,8 @@ const User = () => {
           <ListLoader />
         ) : (
           <div className="w-full">
-            {data.length > 0 ? (
-              data.map((user) => {
+            {filteredData.length > 0 ? (
+              filteredData.map((user) => {
                 const { first_name, avatar, last_name, id, email } = user || {};
                 return (
                   <div
@@ -70,13 +87,14 @@ const User = () => {
           </div>
         ))}
       </div>
-
-      <Pagination
-        totalRecords={total}
-        countsPerPage={per_page}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className=" mt-8">
+        <Pagination
+          totalRecords={total}
+          countsPerPage={per_page}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

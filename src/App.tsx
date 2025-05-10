@@ -2,7 +2,7 @@ import User from "./component/users/User";
 
 function App() {
   return (
-    <div className="m-10">
+    <div className="">
       <User />
     </div>
   );
