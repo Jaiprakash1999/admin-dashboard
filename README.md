@@ -45,3 +45,26 @@ This project uses the [Reqres API](https://reqres.in/api/users) to fetch paginat
   ]
 }
 ```
+Getting Started
+Prerequisites
+Node.js ≥ 18
+
+npm or yarn
+
+Installation
+```json
+# Clone the repository
+git clone https://github.com/yourusername/admin-dashboard.git
+cd admin-dashboard
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+
+-- **Author**
+Jaiprakash Kushwaha
+
+
+
